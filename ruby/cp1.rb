@@ -21,3 +21,5 @@ puts 1.object_id
    object.try(name) #ActiveSupportで拡張されたメソッド
    object&.name #ぼっち演算子
    object.name unless object.nil? #条件分岐で書いた例
+
+#
