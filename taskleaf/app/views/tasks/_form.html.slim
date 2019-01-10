@@ -1,5 +1,5 @@
 - if task.errors.present?
-  u1#error_explanation
+  ul#error_explanation
     - task.errors.full_messages.each do |message|
       li= message
 
@@ -9,5 +9,8 @@
     = f.text_field :name, class: 'form-control', id: 'task_name'
   .form-group
     = f.label :description
-    = f.text_area :description, class: 'form-control', id: 'task_description'
+    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
   = f.submit nil, class: 'btn btn-primary'
