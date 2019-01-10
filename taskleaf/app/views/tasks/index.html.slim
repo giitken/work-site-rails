@@ -17,15 +17,12 @@ h1 タスク一覧
 = link_to '新規登録', new_task_path, class: 'btn btn-primary'
 
 .mb-3
-  = paginate @tasks
-  = page_entries_info @tasks
-
-  table.table.table-hover
-    thead.thead-default
-      tr
-        th= sort_link(@q, :name)
-        th= Task.human_attribute_name(:name)
-        th= Task.human_attribute_name(:created_at)
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= sort_link(@q, :name)
+      th= Task.human_attribute_name(:name)
+      th= Task.human_attribute_name(:created_at)
     tbody
       - @tasks.each do |task|
         tr
@@ -33,7 +30,7 @@ h1 タスク一覧
           td= task.created_at
           td
             = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
-            = link_to '削除', task, method: :delete, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
+            = link_to '削除', task, method: :delete, remote: true, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger delete'
 
 = link_to 'エクスポート', tasks_path(format: :csv), class: 'btn btn-primary'
 
